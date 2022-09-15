@@ -1,34 +1,42 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import s from './Statistics.module.css';
+import './Statistics.css';
 
-const Statistics = ({ title, stats }) => {
+export default function Statistics({
+  good,
+  bad,
+  neutral,
+  total,
+  positivePercentage,
+}) {
   return (
-    <section className={s.statistics}>
-      {title && <h2 className={s.title}>{title}</h2>}
-
-      <ul className={s.list}>
-        {stats.map(({ id, label, percentage }) => {
-          return (
-            <li className={s.item} key={id}>
-              <span className={s.label}>{label}</span>
-              <span className={s.percentage}>{percentage}%</span>
-            </li>
-          );
-        })}
-      </ul>
-    </section>
+    <ul className="stat">
+      <li className="stat-num">
+        Good: <span className="stat-num">{good}</span>
+      </li>
+      <li className="stat-num">
+        Bad: <span className="stat-num">{bad}</span>
+      </li>
+      <li className="stat-num">
+        Neutral: <span className="stat-num">{neutral}</span>
+      </li>
+      <li className="stat-num">
+        Total: <span className="stat-num">{total}</span>
+      </li>
+      <li className="stat-num">
+        Positive:{' '}
+        <span className="stat-num">
+          {isNaN(positivePercentage) ? 0 : `${Math.round(positivePercentage)}%`}
+        </span>
+      </li>
+    </ul>
   );
-};
+}
 
 Statistics.propTypes = {
-  title: PropTypes.string,
-  stats: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-      percentage: PropTypes.number.isRequired,
-    }).isRequired
-  ).isRequired,
+  good: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
 };
-
-export default Statistics;
