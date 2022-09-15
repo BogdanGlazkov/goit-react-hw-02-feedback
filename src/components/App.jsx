@@ -11,7 +11,7 @@ export default class App extends Component {
     good: 0,
   };
 
-  onLeaveFeedback = opt => {
+  countTotalFeedback = opt => {
     this.setState(prevState => {
       return {
         [opt]: prevState[opt] + 1,
@@ -19,17 +19,20 @@ export default class App extends Component {
     });
   };
 
+  countPositiveFeedbackPercentage = (good, total) => {
+    return (good * 100) / total;
+  }
+
   render() {
     const { good, bad, neutral } = this.state;
     const total = Object.values(this.state).reduce((acc, el) => (acc += el), 0);
-    const positivePercentage = (good * 100) / total;
 
     return (
       <div className="app">
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={['good', 'bad', 'neutral']}
-            onLeaveFeedback={this.onLeaveFeedback}
+            onLeaveFeedback={this.countTotalFeedback}
           />
         </Section>
 
@@ -44,7 +47,7 @@ export default class App extends Component {
               bad={bad}
               neutral={neutral}
               total={total}
-              positivePercentage={positivePercentage}
+              positivePercentage={this.countPositiveFeedbackPercentage(good, total)}
             />
           </Section>
         )}
