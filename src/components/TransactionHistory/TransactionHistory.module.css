@@ -1,0 +1,24 @@
+.transactionHistory {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  background-color: lightgreen;
+}
+
+.thead {
+  height: 50px;
+  font-size: 18px;
+  text-transform: uppercase;
+  background-color: darkgreen;
+  color: white;
+}
+
+.tbody td {
+  text-transform: capitalize;
+  border: 1px solid darkgreen;
+  padding: 10px;
+}
+
+.tbody td:hover {
+  transform: scale(1.05);
+}
