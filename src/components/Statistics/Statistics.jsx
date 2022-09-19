@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Statistics.css';
+import s from './Statistics.module.css';
 
 export default function Statistics({
   good,
@@ -10,22 +10,22 @@ export default function Statistics({
   positivePercentage,
 }) {
   return (
-    <ul className="stat">
-      <li className="stat-num">
-        Good: <span className="stat-num">{good}</span>
+    <ul className={s.stat}>
+      <li className={s.statItem}>
+        Good: <span className={s.statNum}>{good}</span>
       </li>
-      <li className="stat-num">
-        Bad: <span className="stat-num">{bad}</span>
+      <li className={s.statItem}>
+        Bad: <span className={s.statNum}>{bad}</span>
       </li>
-      <li className="stat-num">
-        Neutral: <span className="stat-num">{neutral}</span>
+      <li className={s.statItem}>
+        Neutral: <span className={s.statNum}>{neutral}</span>
       </li>
-      <li className="stat-num">
-        Total: <span className="stat-num">{total}</span>
+      <li className={s.statItem}>
+        Total: <span className={s.statNum}>{total}</span>
       </li>
-      <li className="stat-num">
+      <li className={s.statItem}>
         Positive:{' '}
-        <span className="stat-num">
+        <span className={s.statNum}>
           {isNaN(positivePercentage) ? 0 : `${Math.round(positivePercentage)}%`}
         </span>
       </li>

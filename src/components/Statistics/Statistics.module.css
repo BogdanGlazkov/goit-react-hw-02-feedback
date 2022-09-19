@@ -8,7 +8,7 @@
     margin: 20 auto;
 }
 
-.stat-item{
+.statItem{
     display: block;
     width: 100px;
     margin: 10px;
@@ -17,7 +17,7 @@
     background-color: lightcyan;
 }
 
-.stat-num{
+.statNum{
     display: block;
     font-weight: bold;
 }
